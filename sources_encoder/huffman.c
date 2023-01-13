@@ -6,7 +6,7 @@
 /*   By: guribeir <guribeir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:45:35 by guribeir          #+#    #+#             */
-/*   Updated: 2023/01/13 22:30:21 by guribeir         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:58:00 by guribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +67,30 @@ int main(void)
 	int		height;
 	char	**dict;
 	char	*code;
-	char	*bin;
-	char	*new_code;
-	//char	*new_str;
+	//	char	**new_dict;
+	char	*new_str;
 	
+	setlocale(LC_ALL, "utf8");
 	str = read_file(open("infile.txt", O_RDWR));
 	freq_table = count_sym(str);
 	list = create_list();
 	fill_list(freq_table, list);
+	print_list(list);
 	tree = build_tree(list);
+	printf("\n\t-------Árvore Binária--------\n");
+	print_tree(tree, 0);
 	height = tree_height(tree);
 	dict = init_dict(height + 1);
 	create_dict(dict, tree, "", height);
+	print_dict(dict);
+	//char	*troll = concatenate_strings(dict);
+	//printf("-----------TENTATIVAA-------\n %s\n", troll);
+	//new_dict = recreate_dict(troll); //AAAQUI, CONTINUAR
+	//print_dict(new_dict);
 	code = encode(dict, str);
 	printf("\nA string codificada é: %s\n", code);
-	bin = compress(code);
-	printf("\nA string compactada é: %s\n", bin);
-	new_code = decompress(bin);
-	printf("\nA string descompactada é: %s\n", new_code);
-	//new_str = decode(new_code, dict);
-	//printf("\nA string decodificada é: %s\n", new_str);
+	new_str = decode(code, dict);
+	printf("\nA string decodificada é: %s\n", new_str);
 	clean_quit(dict, list, tree, freq_table, str, code);
 	return 0;
 }

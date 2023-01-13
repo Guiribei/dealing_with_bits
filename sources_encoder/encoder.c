@@ -6,7 +6,7 @@
 /*   By: guribeir <guribeir@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:13:14 by guribeir          #+#    #+#             */
-/*   Updated: 2023/01/13 21:43:19 by guribeir         ###   ########.fr       */
+/*   Updated: 2023/01/13 19:08:16 by guribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,81 +106,4 @@ char	*decode(char *str, char**dict)
 		j++;
 	}
 	return (new_str);
-}
-
-char	*compress(char *code)
-{
-	int		i;
-	char	byte;
-	char	aux;
-	int		pos;
-	char	*zip;
-	char	c[2];
-	
-	i = 0;
-	byte = 0;
-	aux = 0;
-	pos = 7;
-	zip = calloc(strlen(code), sizeof(char));
-	if (!zip)
-		return NULL;
-	while(code[i])
-	{
-		aux = 1;
-		if (code[i] == '1')
-		{
-			aux = aux << pos;
-			byte = byte | aux;
-		}
-		pos--;
-		if (pos < 0)
-		{
-			c[0] = byte;
-			c[1] = '\0';
-			zip = strcat(zip, c);
-			byte = 0;
-			pos = 7;
-		}
-		i++;
-	}
-	if (pos != 7)
-	{	
-		c[0] = byte;
-		c[1] = '\0';
-		zip = strcat(zip, c);
-	}
-	return (zip);
-}
-
-int	is_one(char byte, int i)
-{
-	char	aux;
-	
-	aux = (1 << i);
-	return byte & aux;
-}
-
-char	*decompress(char *zip)
-{
-	int		i;
-	int		pos;
-	char	*str;
-
-	i = 0;
-	pos = 7;
-	str = calloc(strlen(zip) * 8, sizeof(char));
-	while(zip[i])
-	{
-		while(pos >= 0)
-		{
-			if(is_one(zip[i], pos))
-				strcat(str, "1");
-			else
-				strcat(str, "0");
-			pos--;
-		}
-		pos = 7;
-		i++;
-	}
-	return (str);
 }

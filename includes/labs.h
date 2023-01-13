@@ -10,6 +10,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <locale.h>
 
 typedef struct s_node
 {
@@ -43,8 +44,6 @@ void	lstclear(t_node **lst);
 void	free_tree(t_node *tree);
 char	*encode(char **dict, char *str);
 char	*decode(char *str, char**dict);
-char	*compress(char *code);
-char	*decompress(char *zip);
 //char	*concatenate_strings(char** dict);
 
 
