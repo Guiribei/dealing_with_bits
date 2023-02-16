@@ -3,7 +3,7 @@
 <h2 align="center">Data Compression</h2>
   <h4 align="center">
     Algoritimo de Huffman e <i>Shared Memory Operations</i>
-    <br />
+    <br/>
   </h4>
 </div>
 
