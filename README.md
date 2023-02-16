@@ -1,6 +1,6 @@
 <a name="Data compression"></a>
 
-<h2 align="center">42 LABS</h2>
+<h2 align="center">Data Compression</h2>
 <br />
   <h4 align="center">
     Algoritimo de Huffman e <i>Shared Memory Operations</i>
