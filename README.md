@@ -1,4 +1,4 @@
-<a name="42-labs"></a>
+<a name="Data compression"></a>
 
 <h2 align="center">42 LABS</h2>
 <br />
