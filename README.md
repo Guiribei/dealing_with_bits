@@ -1,10 +1,12 @@
 <a name="Data compression"></a>
 
 <h2 align="center">Data Compression</h2>
+<hr>
   <h4 align="center">
     Algoritimo de Huffman e <i>Shared Memory Operations</i>
     <br/>
   </h4>
+<hr>
 </div>
 
 <details>
